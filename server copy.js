@@ -2,7 +2,7 @@ import net from 'net';
 import { decodeAVLData, sendCommand } from './helpers.js';  // Adjust the path to the helpers file
 
 // Server configuration
-const HOST = '0.0.0.0';  // Make the server listen on all network interfaces
+const HOST = '127.0.0.1';
 const PORT = process.env.PORT || 8081;
 
 // Function to handle a single client connection
@@ -11,6 +11,8 @@ function handleClient(clientSocket) {
 
     clientSocket.on('data', async (data) => {
         try {
+            // console.log('Received Data: ', data);
+
             if (!imei) {
                 // Extract IMEI length (first two bytes) and IMEI from the buffer
                 const imeiLength = data.readUInt16BE(0); // First two bytes represent the IMEI length
@@ -58,15 +60,6 @@ function main() {
 
     server.listen(PORT, HOST, () => {
         console.log(`Server listening on ${HOST}:${PORT}`);
-    });
-
-    // Gracefully shutdown the server on SIGINT
-    process.on('SIGINT', () => {
-        console.log('Shutting down server...');
-        server.close(() => {
-            console.log('Server closed.');
-            process.exit(0);
-        });
     });
 }
 
