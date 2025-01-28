@@ -16,11 +16,12 @@ function handleClient(clientSocket) {
             if (!imei) {
                 // Extract IMEI length (first two bytes) and IMEI from the buffer
                 const imeiLength = data.readUInt16BE(0); // First two bytes represent the IMEI length
-                imei = data.slice(2, 2 + imeiLength).toString(); // Slice the buffer to get the IMEI bytes
+                const grab_imei = data.slice(2, 2 + imeiLength).toString(); // Slice the buffer to get the IMEI bytes
 
                 // Ensure the IMEI is valid (should be 15 digits)
-                if (imei.length === 15 && /^[0-9]+$/.test(imei)) {
-                    console.log(`Received IMEI: ${imei}`);
+                if (grab_imei.length === 15 && /^[0-9]+$/.test(grab_imei)) {
+                    console.log(`Received IMEI: ${grab_imei}`);
+                    imei = grab_imei;
                     // Send start command after IMEI reception
                     sendCommand(clientSocket, true);
                 } else {
