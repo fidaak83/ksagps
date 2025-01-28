@@ -1,4 +1,4 @@
-import net from 'net';
+const net = require('net');
 
 // Define the host and port to listen on
 const HOST = '0.0.0.0';  // Listen on all network interfaces
