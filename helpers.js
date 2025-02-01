@@ -94,13 +94,13 @@ function mergeIoData(data) {
       ...entry.ioData.io8B
     ];
 
-    // Add the corresponding I/O names to the merged data
-    entry.ioData.forEach(io => {
-      const ioName = getIoNameById(io.id);
-      if (ioName) {
-        io.io_name = ioName;  // Add the io_name to the io object
-      }
-    });
+    // // Add the corresponding I/O names to the merged data
+    // entry.ioData.forEach(io => {
+    //   const ioName = getIoNameById(io.id);
+    //   if (ioName) {
+    //     io.io_name = ioName;  // Add the io_name to the io object
+    //   }
+    // });
   });
 
   return data;
