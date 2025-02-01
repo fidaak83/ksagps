@@ -128,7 +128,7 @@ async function sendDataToServer(data) {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(data, null, 2),
+      body: JSON.stringify(data),
       signal: controller.signal, // Attach abort signal
     });
 

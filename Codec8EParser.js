@@ -45,7 +45,7 @@ class Codec8Parser {
     parseAvlItem() {
       const timestamp = parseInt(this.readUInt(8)) / 1000; // Timestamp
       // const date = new Date(timestamp * 1000);
-      const timeString = new Date(timestamp * 1000).toLocaleString(); // Timestamp
+      // const timeString = new Date(timestamp * 1000).toLocaleString(); // Timestamp
       const priority = this.readUInt(1); // Priority
   
       // GPS Element
@@ -80,7 +80,9 @@ class Codec8Parser {
   
       const ioData = { eventIoId, totalIo, io1B, io2B, io4B, io8B };
   
-      return { timestamp, timeString, priority, gpsData, ioData };
+      // return { timestamp, timeString, priority, gpsData, ioData };
+      return { timestamp, priority, gpsData, ioData };
+
     }
   
     // Parse the AVL packet
