@@ -123,7 +123,7 @@ async function sendDataToServer(data) {
     const controller = new AbortController();
     const timeoutId = setTimeout(() => controller.abort(), timeout);
 
-    const response = await fetch('https://newlineserver.com/gpsdata.php', {
+    const response = await fetch('    http://server159354.ksa-1.buzinesscloud.com:8000/api/test', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
